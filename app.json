@@ -1,27 +1,34 @@
 {
   "expo": {
-    "name": "FirstApp",
-    "slug": "FirstApp",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDd9OOcCH4PQBqBXIZRcbmyk7blHaDyDdw"
+        }
       }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "ios": {
+      "config": {
+        "googleMapsApiKey": "AIzaSyDd9OOcCH4PQBqBXIZRcbmyk7blHaDyDdw"
+      },
+      "android": {
+        "adaptiveIcon": {
+          "foregroundImage": "./assets/adaptive-icon.png",
+          "backgroundColor": "#ffffff"
+        },
+        "package": "com.anonymous.FirstApp"
+      },
+      "web": {
+        "favicon": "./assets/favicon.png"
+      },
+      "plugins": [
+        [
+          "expo-location",
+          {
+            "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+          }
+        ]
+      ]
     }
   }
 }
