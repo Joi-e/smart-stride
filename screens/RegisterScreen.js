@@ -14,10 +14,11 @@ import {
   ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { FIREBASE_API_KEY } from "@env";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: "apiKey",
   authDomain: "smartstride-b3817.firebaseapp.com",
   projectId: "smartstride-b3817",
   storageBucket: "smartstride-b3817.appspot.com",

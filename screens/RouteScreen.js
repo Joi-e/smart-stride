@@ -50,15 +50,15 @@ const simulateMovement = (routeCoordinates, steps = 100) => {
         start.longitude + (end.longitude - start.longitude) * fraction;
 
       // Simulate realistic speed variations (between 1.2 and 1.6 m/s)
-      const speed = 1.2 + Math.random() * 0.4;
+      const speed = 1.5 + Math.random() * 2;
 
       coords.push({
         latitude,
         longitude,
         altitude: start.altitude || 0,
         accuracy: 5,
-        speed,
-        timestamp: Date.now() + coords.length * 1000,
+        speed, // Store the target speed for this point
+        timestamp: Date.now() + coords.length * 1000, // Increment timestamp by 1 second per point
       });
     }
   }
@@ -319,7 +319,10 @@ const RouteTrackingScreen = ({ route, navigation }) => {
 
     if (lastLocationRef.current) {
       if (isSimulating) {
-        // For simulation, calculate distance between consecutive points
+        // For simulation, use the pre-calculated speed from simulateMovement
+        speed = coords.speed || 0;
+
+        // Calculate distance for this segment
         const segmentDistance = calculateDistance(
           lastLocationRef.current.latitude,
           lastLocationRef.current.longitude,
@@ -341,8 +344,16 @@ const RouteTrackingScreen = ({ route, navigation }) => {
       }
       // Calculate speed in km/h
       const timeDiff =
-        (currentTime - lastLocationRef.current.timestamp) / 1000 / 3600;
-      speed = timeDiff > 0 ? (newDistance - stats.distance) / timeDiff : 0;
+        (currentTime - lastLocationRef.current.timestamp) / 1000 / 3600; // Convert to hours
+      if (timeDiff > 0) {
+        const segmentDistance = calculateDistance(
+          lastLocationRef.current.latitude,
+          lastLocationRef.current.longitude,
+          coords.latitude,
+          coords.longitude
+        );
+        speed = segmentDistance / timeDiff;
+      }
 
       const elevationChange =
         coords.altitude - (lastLocationRef.current.altitude || 0);

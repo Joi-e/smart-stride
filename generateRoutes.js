@@ -122,6 +122,7 @@ const getWeatherScore = (weatherDescription, windSpeed, temperature) => {
 
 const generateRoutes = async (userLocation, preferences) => {
   console.log("Initial preferences passed to generateRoutes:", preferences);
+  console.log("Google Maps API Key present:", !!googleMapsApiKey);
   const googleMapsApiKey = Constants.expoConfig.extra.googleMapsApiKey;
   const mlSystem = new IntelligentModel();
   const user = auth.currentUser;

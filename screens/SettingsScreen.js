@@ -46,7 +46,6 @@ const SettingsScreen = () => {
       if (userDoc.exists()) {
         const data = userDoc.data();
         if (data.preferences) {
-          // Ensure we're reading the correct fitness level from preferences
           setFitnessLevel(data.preferences.fitnessLevel || "Beginner");
           setExerciseDays(data.preferences.exerciseDays || 3);
           setExerciseScenery(data.preferences.exerciseScenery || "Urban");

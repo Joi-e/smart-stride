@@ -9,7 +9,7 @@ import StartScreen from "./screens/StartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import FirstQuestionScreen from "./screens/FirstQuestionScreen";
-import SecondQuestionScreen from "./screens/SecondQuestionScreen";
+import SecondQuestionScreen from "./screens/SecondQuestionsScreen";
 import ThirdQuestionScreen from "./screens/ThirdQuestionScreen";
 import FourthQuestionScreen from "./screens/FourthQuestionScreen";
 import FifthQuestionScreen from "./screens/FifthQuestionScreen";
